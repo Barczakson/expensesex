@@ -1,0 +1,13 @@
+# Development and QA dependencies
+pytest>=7.0
+pytest-cov>=4.0
+pytest-asyncio>=0.23
+httpx>=0.27
+ruff>=0.5.0
+black>=24.3.0
+isort>=5.12.0
+mypy>=1.8.0
+pre-commit>=3.6.0
+
+# Database migrations (versioning; write raw SQL in revisions)
+alembic>=1.13

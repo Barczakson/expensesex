@@ -1,0 +1,42 @@
+# Centralized tool configuration so local runs and pre-commit behave the same.
+# This keeps formatting, linting, and typing consistent across environments.
+
+[tool.black]
+# Black is our single formatter. Ruff enforces lint rules, not formatting.
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+# Align Ruff with Black to avoid style disagreements.
+target-version = "py310"
+line-length = 88
+src = ["src", "tests"]  # where Ruff looks for project files
+
+[tool.ruff.lint]
+# Ignore rules that conflict with Black or are redundant with it.
+ignore = ["E203", "E501"]
+
+[tool.isort]
+# Make isort produce output compatible with Black.
+profile = "black"
+line_length = 88
+combine_as_imports = true
+
+[tool.mypy]
+# Type-checking tuned for a modern FastAPI/Pydantic codebase.
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+no_implicit_optional = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+pretty = true
+# The Pydantic plugin helps mypy understand BaseModel patterns.
+plugins = ["pydantic.mypy"]
+# Ensure mypy can resolve the src/ layout without installing the package.
+mypy_path = "src"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false

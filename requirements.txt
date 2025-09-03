@@ -1,0 +1,14 @@
+# Web framework and validation
+fastapi>=0.111
+pydantic>=2.7
+
+# ASGI server (performance extras via [standard])
+uvicorn[standard]>=0.30
+
+# Database driver (async PostgreSQL)
+asyncpg>=0.29
+
+# Configuration and serialization performance
+pydantic-settings>=2.2
+orjson>=3.9
+python-dotenv>=1.0
